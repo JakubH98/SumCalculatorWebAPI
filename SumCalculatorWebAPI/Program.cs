@@ -39,7 +39,7 @@ namespace SumCalculatorWebAPI
             app.Run();
         }
 
-        public int GetSequenceValue(string collectionName)
+       /* public int GetSequenceValue(string collectionName)
         {
             IMongoDatabase _database = new IMongoDatabase();
 
@@ -56,6 +56,6 @@ namespace SumCalculatorWebAPI
             var result = counterCollection.FindOneAndUpdate(filter, update, options);
 
             return result["sequence"].ToInt32();
-        }
+        }*/
     }
 }
