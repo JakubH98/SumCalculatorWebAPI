@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("d94b5ab5-6344-4467-938d-e079e4d83dd6")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("SumCalculatorWebAPI")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec825fa8325437d4f71419f5f00b0d5911613d9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SumCalculatorWebAPI")]
