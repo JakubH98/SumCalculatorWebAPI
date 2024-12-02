@@ -31,3 +31,10 @@ C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\ne
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.pdb
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.genruntimeconfig.cache
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\ref\SumCalculatorWebAPI.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\DnsClient.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Snappier.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.sourcelink.json
