@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2Y8BokELvPfINoj/0ICw364YmVbxJfcppoCmh03Jv9U=",
+  "Source": "SumCalculatorWebAPI",
+  "BasePath": "_content/SumCalculatorWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
