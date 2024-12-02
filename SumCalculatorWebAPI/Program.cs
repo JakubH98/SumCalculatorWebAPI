@@ -6,11 +6,17 @@ namespace SumCalculatorWebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.Configure<Database>(
+                builder.Configuration.GetSection("DBUserSettings"));
+            builder.Services.AddSingleton<Database>();
+
             // Add services to the container.
             builder.Services.AddAuthorization();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
 
             var app = builder.Build();
 
