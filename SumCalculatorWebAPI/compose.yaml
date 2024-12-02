@@ -1,0 +1,19 @@
+﻿services:
+  database:
+    image: mongo:7
+    restart: always
+    container_name: dbmongo
+    ports:
+      - "27017:27017"
+    volumes: 
+      - dbdata:/data/db
+  #server:
+  #  build:
+  #    context: .
+  #    target: final
+  #  ports:
+  #    - 5093:5093
+  #  environment:
+  #    - ASPNETCORE_URLS=http://+:5093
+volumes:
+  dbdata:
