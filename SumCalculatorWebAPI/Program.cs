@@ -1,6 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using SumCalculatorWebAPI.Domain;
+using System.Diagnostics;
 
 
 namespace SumCalculatorWebAPI
@@ -10,25 +11,25 @@ namespace SumCalculatorWebAPI
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+
             // Read MongoDB settings from configuration
-            var connectionString = builder.Configuration.GetSection("DatabaseSettings:ConnectionString").Value;
-            var databaseName = builder.Configuration.GetSection("DatabaseSettings:DatabaseName").Value;
+            //var connectionString = builder.Configuration.GetSection("DatabaseSettings:ConnectionString").Value;
+            //var databaseName = builder.Configuration.GetSection("DatabaseSettings:DatabaseName").Value;
 
             // Initialize the MongoDB Singleton
-            MongoDBSingleton.Initialize(connectionString, databaseName);
+            //MongoDBSingleton.Initialize(connectionString, databaseName);
 
+            var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.Configure<Database>(
+               builder.Configuration.GetSection("DatabaseSettings"));
 
-            //builder.Services.Configure<Database>(
-            //    builder.Configuration.GetSection("DBUserSettings"));
-
-            // builder.Services.AddSingleton<IRepository<User>>();
+             builder.Services.AddSingleton<IRepository<User>, MongoRepository<User>>();
 
             builder.Services.AddAuthorization();
-
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
 
             var app = builder.Build();
 
@@ -42,32 +43,32 @@ namespace SumCalculatorWebAPI
                     options.RoutePrefix = "swagger";
                 });
             }
-
-
             app.UseHttpsRedirection();
+           // app.UseAuthorization();
 
-            app.UseAuthorization();
+            app.MapPost("/api/users", async (IRepository<User> repository, User user) =>
+            {
+                Debug.WriteLine("test");
+                await repository.Add(user);
+                return Results.Ok($"User {user.Username} created successfully!");
+            });
 
-                       
+            app.MapGet("/api/users/{id}", async (IRepository<User> repository, int id) =>
+            {
+                var user = await repository.Get(id);
+                if (user is null)
+                {
+                    return Results.NotFound("User not found.");
+                }
+
+                return Results.Ok(user);
+            });
+
+
+
+
             app.Run();
         }
 
-        public int GetSequenceValue(string collectionName, IMongoDatabase _database)
-        {
-
-            var counterCollection = _database.GetCollection<BsonDocument>("counters");
-
-            var filter = Builders<BsonDocument>.Filter.Eq("id", collectionName);
-            var update = Builders<BsonDocument>.Update.Inc("sequence", 1);
-
-            var options = new FindOneAndUpdateOptions<BsonDocument>
-            {
-                ReturnDocument = ReturnDocument.After
-            };
-
-            var result = counterCollection.FindOneAndUpdate(filter, update, options);
-
-            return result["sequence"].ToInt32();
-        }
     }
 }

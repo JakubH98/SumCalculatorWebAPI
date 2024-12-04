@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace SumCalculatorWebAPI
@@ -21,8 +22,24 @@ namespace SumCalculatorWebAPI
 
         public async Task<T> Get(int id)
         {
-            var filter = Builders<T>.Filter.Eq("ID", id);
+            var filter = Builders<T>.Filter.Eq("ID", id.ToString());
             return await _collection.Find(filter).FirstOrDefaultAsync();
+        }
+        public async Task<int> GetSequenceValue(string collectionName)
+        {
+            var counterCollection = _collection.Database.GetCollection<BsonDocument>("counters");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("id", collectionName);
+            var update = Builders<BsonDocument>.Update.Inc("sequence", 1);
+
+            var options = new FindOneAndUpdateOptions<BsonDocument>
+            {
+                ReturnDocument = ReturnDocument.After,
+                IsUpsert = true
+            };
+
+            var result = await counterCollection.FindOneAndUpdateAsync(filter, update, options);
+            return result["sequence"].ToInt32();
         }
     }
 }
