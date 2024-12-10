@@ -12,12 +12,6 @@ namespace SumCalculatorWebAPI
         public static void Main(string[] args)
         {
 
-            // Read MongoDB settings from configuration
-            //var connectionString = builder.Configuration.GetSection("DatabaseSettings:ConnectionString").Value;
-            //var databaseName = builder.Configuration.GetSection("DatabaseSettings:DatabaseName").Value;
-
-            // Initialize the MongoDB Singleton
-            //MongoDBSingleton.Initialize(connectionString, databaseName);
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +27,7 @@ namespace SumCalculatorWebAPI
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -44,13 +38,12 @@ namespace SumCalculatorWebAPI
                 });
             }
             app.UseHttpsRedirection();
-           // app.UseAuthorization();
+            // app.UseAuthorization();
 
             app.MapPost("/api/users", async (IRepository<User> repository, User user) =>
             {
-                Debug.WriteLine("test");
                 await repository.Add(user);
-                return Results.Ok($"User {user.Username} created successfully!");
+                return Results.Ok($"User {user.Username} created successfully with ID {user.ID}!");
             });
 
             app.MapGet("/api/users/{id}", async (IRepository<User> repository, int id) =>
@@ -64,11 +57,30 @@ namespace SumCalculatorWebAPI
                 return Results.Ok(user);
             });
 
+            app.MapDelete("api/users/{id}", async (IRepository<User> repository, int id) =>
+            {
+                var user = await repository.Get(id);
+                if (user is null)
+                {
+                    return Results.NotFound("User not found.");
+                }
+                await repository.Delete(id);
+                return Results.Ok("User deleted.");
 
+            });
+            app.MapPut("/api/users/{id}", async (IRepository<User> repository, string id, User updatedUser) =>
+            {
+                var existingUser = await repository.Get(int.Parse(id));
+                if (existingUser is null)
+                {
+                    return Results.NotFound("User not found.");
+                }
 
-
+                updatedUser.ID = id; // Ensure the updated user keeps the same ID
+                await repository.Update(updatedUser);
+                return Results.Ok($"User {updatedUser.Username} updated successfully!");
+            });
             app.Run();
         }
-
     }
 }

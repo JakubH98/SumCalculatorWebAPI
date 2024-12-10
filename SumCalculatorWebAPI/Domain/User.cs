@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 namespace SumCalculatorWebAPI.Domain
 {
-    public class User
+    public class User : IEntity
     {
         [BsonId]
         public string? ID { get; set; }
