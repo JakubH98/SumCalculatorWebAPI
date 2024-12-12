@@ -2,60 +2,63 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using SumCalculatorWebAPI.Domain;
+using System.Runtime.CompilerServices;
 
 namespace SumCalculatorWebAPI
 {
     public class MongoRepository<T> : IRepository<T> where T : IEntity
     {
         private readonly IMongoCollection<T> _collection;
-        private readonly IMongoCollection<BsonDocument> _countersCollection;
+        private readonly IMongoDatabase _database;
 
         public MongoRepository(IOptions<Database> databaseConfig)
         {
             var client = new MongoClient(databaseConfig.Value.ConnectionString);
-            var database = client.GetDatabase(databaseConfig.Value.DatabaseName);
-            _collection = database.GetCollection<T>(databaseConfig.Value.CollectionName);
-            _countersCollection = database.GetCollection<BsonDocument>("Counters");
+            _database = client.GetDatabase(databaseConfig.Value.DatabaseName);
+            _collection = _database.GetCollection<T>(typeof(T).Name);
         }
-        private async Task<string> GetNextIdAsync()
+
+        public async Task<int> GetNextIdAsync()
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", "userId");
-            var update = Builders<BsonDocument>.Update.Inc("value", 1);
+            var counterCollection = _database.GetCollection<BsonDocument>("Counters");
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", typeof(T).Name);
+            var update = Builders<BsonDocument>.Update.Inc("SequenceValue", 1);
+
             var options = new FindOneAndUpdateOptions<BsonDocument>
             {
-                IsUpsert = true, 
+                IsUpsert = true,
                 ReturnDocument = ReturnDocument.After
             };
 
-            var result = await _countersCollection.FindOneAndUpdateAsync(filter, update, options);
-            return result["value"].ToString();
+            var result = await counterCollection.FindOneAndUpdateAsync(filter, update, options);
+            return result["SequenceValue"].AsInt32;
         }
 
         public async Task Add(T item)
         {
-            if (string.IsNullOrEmpty(item.ID))
+            if (int.TryParse(item.ID, out _) == false)
             {
-                item.ID = await GetNextIdAsync();
+                item.ID = (await GetNextIdAsync()).ToString();
             }
             await _collection.InsertOneAsync(item);
         }
 
         public async Task<T> Get(int id)
         {
-            var filter = Builders<T>.Filter.Eq(entity => entity.ID, id.ToString());
+            var filter = Builders<T>.Filter.Eq("ID", id.ToString());
             return await _collection.Find(filter).FirstOrDefaultAsync();
-        }
-
-        public async Task Delete(int id)
-        {
-            var filter = Builders<T>.Filter.Eq(entity => entity.ID, id.ToString());
-            await _collection.DeleteOneAsync(filter);
         }
 
         public async Task Update(T item)
         {
-            var filter = Builders<T>.Filter.Eq(entity => entity.ID, item.ID);
+            var filter = Builders<T>.Filter.Eq("ID", item.ID);
             await _collection.ReplaceOneAsync(filter, item);
+        }
+
+        public async Task Delete(int id)
+        {
+            var filter = Builders<T>.Filter.Eq("ID", id.ToString());
+            await _collection.DeleteOneAsync(filter);
         }
     }
 }

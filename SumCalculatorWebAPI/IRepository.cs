@@ -9,6 +9,7 @@ namespace SumCalculatorWebAPI
         Task<T> Get(int id);
         Task Delete(int id);
         Task Update(T item);
+        //Task<IEnumerable<T>> GetAll();
 
     }
 }

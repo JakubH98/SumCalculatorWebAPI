@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using SumCalculatorWebAPI.Domain;
@@ -11,23 +12,21 @@ namespace SumCalculatorWebAPI
     {
         public static void Main(string[] args)
         {
-
-
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.Configure<Database>(
-               builder.Configuration.GetSection("DatabaseSettings"));
+            
+            builder.Services.Configure<Database>(builder.Configuration.GetSection("DatabaseSettings"));
 
-             builder.Services.AddSingleton<IRepository<User>, MongoRepository<User>>();
+            
+            builder.Services.AddSingleton(typeof(IRepository<>), typeof(MongoRepository<>));
 
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-
+            builder.Services.AddControllers();
             var app = builder.Build();
 
-
+           
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -37,49 +36,60 @@ namespace SumCalculatorWebAPI
                     options.RoutePrefix = "swagger";
                 });
             }
+            app.MapControllers();
             app.UseHttpsRedirection();
-            // app.UseAuthorization();
 
-            app.MapPost("/api/users", async (IRepository<User> repository, User user) =>
+            /*app.MapPost("/api/users", async (IRepository<User> repository, User user) =>
             {
                 await repository.Add(user);
-                return Results.Ok($"User {user.Username} created successfully with ID {user.ID}!");
+                return Results.Ok($"User {user.Username} created successfully! with ID {user.ID}!");
             });
 
             app.MapGet("/api/users/{id}", async (IRepository<User> repository, int id) =>
             {
                 var user = await repository.Get(id);
-                if (user is null)
-                {
-                    return Results.NotFound("User not found.");
-                }
-
+                if (user is null) return Results.NotFound("User not found.");
                 return Results.Ok(user);
             });
 
-            app.MapDelete("api/users/{id}", async (IRepository<User> repository, int id) =>
+            app.MapPut("/api/users", async (IRepository<User> repository, User user) =>
             {
-                var user = await repository.Get(id);
-                if (user is null)
-                {
-                    return Results.NotFound("User not found.");
-                }
+                await repository.Update(user);
+                return Results.Ok($"User {user.Username} updated successfully! with ID {user.ID}!");
+            });
+
+            app.MapDelete("/api/users/{id}", async (IRepository<User> repository, int id) =>
+            {
                 await repository.Delete(id);
-                return Results.Ok("User deleted.");
-
+                return Results.Ok("User deleted successfully.");
             });
-            app.MapPut("/api/users/{id}", async (IRepository<User> repository, string id, User updatedUser) =>
+
+           
+            app.MapPost("/api/projects", async (IRepository<Project> repository, Project project) =>
             {
-                var existingUser = await repository.Get(int.Parse(id));
-                if (existingUser is null)
-                {
-                    return Results.NotFound("User not found.");
-                }
-
-                updatedUser.ID = id; // Ensure the updated user keeps the same ID
-                await repository.Update(updatedUser);
-                return Results.Ok($"User {updatedUser.Username} updated successfully!");
+                await repository.Add(project);
+                return Results.Ok($"Project {project.Title} created successfully!");
             });
+
+            app.MapGet("/api/projects/{id}", async (IRepository<Project> repository, int id) =>
+            {
+                var project = await repository.Get(id);
+                if (project is null) return Results.NotFound("Project not found.");
+                return Results.Ok(project);
+            });
+
+            app.MapPut("/api/projects", async (IRepository<Project> repository, Project project) =>
+            {
+                await repository.Update(project);
+                return Results.Ok($"Project {project.Title} updated successfully!");
+            });
+
+            app.MapDelete("/api/projects/{id}", async (IRepository<Project> repository, int id) =>
+            {
+                await repository.Delete(id);
+                return Results.Ok("Project deleted successfully.");
+            });*/
+
             app.Run();
         }
     }
