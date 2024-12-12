@@ -1,5 +1,6 @@
 ﻿using SumCalculatorWebAPI.Domain;
 using Microsoft.AspNetCore.Mvc;
+using static SumCalculatorWebAPI.Controllers.GenericControllercs;
 
 namespace SumCalculatorWebAPI.Controllers
 {

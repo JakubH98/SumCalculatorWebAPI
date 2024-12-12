@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using SumCalculatorWebAPI.Domain;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 namespace SumCalculatorWebAPI
@@ -59,6 +60,10 @@ namespace SumCalculatorWebAPI
         {
             var filter = Builders<T>.Filter.Eq("ID", id.ToString());
             await _collection.DeleteOneAsync(filter);
+        }
+        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _collection.Find(predicate).AnyAsync();
         }
     }
 }

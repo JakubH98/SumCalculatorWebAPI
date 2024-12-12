@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using System.Linq.Expressions;
 
 namespace SumCalculatorWebAPI
 {
@@ -9,7 +10,9 @@ namespace SumCalculatorWebAPI
         Task<T> Get(int id);
         Task Delete(int id);
         Task Update(T item);
-        //Task<IEnumerable<T>> GetAll();
+        Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
 
+        //Task<IEnumerable<T>> GetAll(); - sounds good doesnt work
+         
     }
 }

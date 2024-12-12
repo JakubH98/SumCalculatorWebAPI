@@ -3,66 +3,69 @@ using SumCalculatorWebAPI.Domain;
 
 namespace SumCalculatorWebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class GenericController<T> : ControllerBase where T : class, IEntity
+    public class GenericControllercs
     {
-        private readonly IRepository<T> _repository;
-
-        public GenericController(IRepository<T> repository)
+        [ApiController]
+        [Route("api/[controller]")]
+        public class GenericController<T> : ControllerBase where T : class, IEntity
         {
-            _repository = repository;
-        }
+            private readonly IRepository<T> _repository;
 
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] T entity)
-        {
-            if (entity == null)
+            public GenericController(IRepository<T> repository)
             {
-                return BadRequest("Invalid data.");
+                _repository = repository;
             }
 
-            await _repository.Add(entity);
-            return CreatedAtAction(nameof(GetById), new { id = entity.ID }, entity);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var entity = await _repository.Get(id);
-            if (entity == null)
+            [HttpPost]
+            public async virtual Task<IActionResult> Add([FromBody] T entity)
             {
-                return NotFound($"Entity with ID {id} not found.");
-            }
-            return Ok(entity);
-        }
+                if (entity == null)
+                {
+                    return BadRequest("Invalid data.");
+                }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] T updatedEntity)
-        {
-            var existingEntity = await _repository.Get(id);
-            if (existingEntity == null)
-            {
-                return NotFound($"Entity with ID {id} not found.");
+                await _repository.Add(entity);
+                return CreatedAtAction(nameof(GetById), new { id = entity.ID }, entity);
             }
 
-            updatedEntity.ID = id.ToString();
-            await _repository.Update(updatedEntity);
-
-            return Ok($"Entity with ID {id} updated successfully.");
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var existingEntity = await _repository.Get(id);
-            if (existingEntity == null)
+            [HttpGet("{id}")]
+            public async Task<IActionResult> GetById(int id)
             {
-                return NotFound($"Entity with ID {id} not found.");
+                var entity = await _repository.Get(id);
+                if (entity == null)
+                {
+                    return NotFound($"Entity with ID {id} not found.");
+                }
+                return Ok(entity);
             }
 
-            await _repository.Delete(id);
-            return Ok($"Entity with ID {id} deleted successfully.");
+            [HttpPut("{id}")]
+            public async Task<IActionResult> Update(int id, [FromBody] T updatedEntity)
+            {
+                var existingEntity = await _repository.Get(id);
+                if (existingEntity == null)
+                {
+                    return NotFound($"Entity with ID {id} not found.");
+                }
+
+                updatedEntity.ID = id.ToString();
+                await _repository.Update(updatedEntity);
+
+                return Ok($"Entity with ID {id} updated successfully.");
+            }
+
+            [HttpDelete("{id}")]
+            public async Task<IActionResult> Delete(int id)
+            {
+                var existingEntity = await _repository.Get(id);
+                if (existingEntity == null)
+                {
+                    return NotFound($"Entity with ID {id} not found.");
+                }
+
+                await _repository.Delete(id);
+                return Ok($"Entity with ID {id} deleted successfully.");
+            }
         }
     }
 }

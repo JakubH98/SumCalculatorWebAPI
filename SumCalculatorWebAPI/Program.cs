@@ -52,6 +52,8 @@ namespace SumCalculatorWebAPI
             app.MapControllers();
             app.UseHttpsRedirection();
 
+
+            // MINIMAL API CALLS
             /*app.MapPost("/api/users", async (IRepository<User> repository, User user) =>
             {
                 await repository.Add(user);
