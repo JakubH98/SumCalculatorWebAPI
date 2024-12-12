@@ -24,9 +24,22 @@ namespace SumCalculatorWebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddControllers();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000") 
+                          .AllowAnyHeader()                   
+                          .AllowAnyMethod();                  
+                });
+            });
+
             var app = builder.Build();
 
-           
+            // Enable CORS middleware
+            app.UseCors("AllowReactApp");
+
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
