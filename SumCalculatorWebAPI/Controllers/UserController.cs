@@ -11,8 +11,6 @@ using System.IdentityModel.Tokens.Jwt;
 namespace SumCalculatorWebAPI.Controllers
 {
     [Route("api/users")]
-    [ApiController]
-    [Authorize(AuthenticationSchemes = Program.AuthScheme)]
     public class UsersController : GenericController<User>
     {
         private readonly IRepository<User> _repository;
@@ -44,8 +42,8 @@ namespace SumCalculatorWebAPI.Controllers
             await _repository.Add(user);
             return CreatedAtAction(nameof(GetById), new { id = user.ID }, user);
         }
-        [AllowAnonymous]
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
@@ -62,7 +60,7 @@ namespace SumCalculatorWebAPI.Controllers
             }
             var token = GenerateJwtToken(existingUser.Username);
 
-            // Remove the password before returning the user object
+
             existingUser.Password = null;
 
             return Ok(new
@@ -70,31 +68,30 @@ namespace SumCalculatorWebAPI.Controllers
                 Token = token,
                 User = existingUser
             });
-
         }
+
         private string GenerateJwtToken(string username)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey12345"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JakubsTopSecretSuperKeyThatNobodyShouldEverKnowAbout12345"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var tokenDescriptor = new JwtSecurityToken(
-                issuer: "https://localhost:5001",
-                audience: "https://localhost:5001",
+                issuer: "https://localhost:7214",
+                audience: "https://localhost:7214",
                 claims: new[] { new Claim(ClaimTypes.Name, username) },
                 expires: DateTime.UtcNow.AddMinutes(20),
                 signingCredentials: credentials
             );
-
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
         [HttpPost("logout")]
-        public async Task<IActionResult> Logout()
+        [Authorize] // Ensures the user is authenticated to access this endpoint
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync(Program.AuthScheme);
-            return Ok("Logged out successfully.");
+            // JWT is stateless, so the backend cannot invalidate it directly.
+            // The frontend should delete the token locally (e.g., from localStorage or cookies).
+            return Ok(new { message = "Logged out successfully." });
         }
-
-
     }
 }

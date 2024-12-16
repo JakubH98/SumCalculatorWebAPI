@@ -17,36 +17,33 @@ namespace SumCalculatorWebAPI
     
     public class Program
     {
-        public const string AuthScheme = "Token";
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             
             builder.Services.Configure<Database>(builder.Configuration.GetSection("DatabaseSettings"));
-
             builder.Services.AddSingleton(typeof(IRepository<>), typeof(MongoRepository<>));
             builder.Services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
-                 options.TokenValidationParameters = new TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "https://localhost:5001",
-                    ValidAudience = "https://localhost:5001",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey12345"))
+                    ValidIssuer = "https://localhost:7214",
+                    ValidAudience = "https://localhost:7214",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JakubsTopSecretSuperKeyThatNobodyShouldEverKnowAbout12345"))
                 };
             });
-
-
-
+            builder.Services.AddAuthorization();
+            builder.Services.AddControllers();
 
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddControllers();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp", policy =>
@@ -59,13 +56,8 @@ namespace SumCalculatorWebAPI
 
             var app = builder.Build();
 
-
-
             // Enable CORS 
             app.UseCors("AllowReactApp");
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -75,9 +67,10 @@ namespace SumCalculatorWebAPI
                     options.RoutePrefix = "swagger";
                 });
             }
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.MapControllers();
             app.UseHttpsRedirection();
-
             app.Run();
 
 
