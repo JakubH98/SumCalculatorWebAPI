@@ -136,5 +136,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SumCalculatorWebAPI.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

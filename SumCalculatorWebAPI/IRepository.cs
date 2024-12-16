@@ -10,9 +10,9 @@ namespace SumCalculatorWebAPI
         Task<T> Get(int id);
         Task Delete(int id);
         Task Update(T item);
-        Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
+        Task<bool> Exists(Expression<Func<T, bool>> predicate);
+        Task<T?> GetFirstOrDefault(Expression<Func<T, bool>> predicate);
 
-        //Task<IEnumerable<T>> GetAll(); - sounds good doesnt work
-         
+        //Task<IEnumerable<T>> GetAll(); - TODO
     }
 }

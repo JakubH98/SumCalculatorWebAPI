@@ -21,21 +21,41 @@ namespace SumCalculatorWebAPI.Controllers
             {
                 return BadRequest("Username and Password are required.");
             }
-
-            bool usernameExists = await _repository.ExistsAsync(u => u.Username == user.Username);
+            bool usernameExists = await _repository.Exists(u => u.Username == user.Username);
             if (usernameExists)
             {
-                return Conflict($"A user with the username '{user.Username}' already exists.");
+                return Conflict(new { message = $"A user with the username '{user.Username}' already exists." });
             }
 
-            bool emailExists = await _repository.ExistsAsync(u => u.Email == user.Email);
+            bool emailExists = await _repository.Exists(u => u.Email == user.Email);
             if (emailExists)
             {
-                return Conflict($"A user with the email {user.Email} already exists. Please use a different one");
+                return Conflict(new { message = $"A user with the email {user.Email} already exists. Please use a different one" });
             }
 
             await _repository.Add(user);
             return CreatedAtAction(nameof(GetById), new { id = user.ID }, user);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+            {
+                return BadRequest("Username and Password are required.");
+            }
+
+
+            var existingUser = await _repository.GetFirstOrDefault(u => u.Username == request.Username && u.Password == request.Password);
+
+            if (existingUser == null)
+            {
+                return Conflict("Invalid username or password.");
+            }
+
+            existingUser.Password = null;
+
+            return Ok(existingUser);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace SumCalculatorWebAPI
 
             var app = builder.Build();
 
-            // Enable CORS middleware
+            // Enable CORS 
             app.UseCors("AllowReactApp");
 
 
@@ -51,6 +51,12 @@ namespace SumCalculatorWebAPI
             }
             app.MapControllers();
             app.UseHttpsRedirection();
+
+
+
+
+
+
 
 
             // MINIMAL API CALLS
