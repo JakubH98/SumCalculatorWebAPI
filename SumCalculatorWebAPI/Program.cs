@@ -3,6 +3,12 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using SumCalculatorWebAPI.Domain;
 using System.Diagnostics;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+
 
 
 namespace SumCalculatorWebAPI
@@ -17,21 +23,27 @@ namespace SumCalculatorWebAPI
             var builder = WebApplication.CreateBuilder(args);
             
             builder.Services.Configure<Database>(builder.Configuration.GetSection("DatabaseSettings"));
-            
+
             builder.Services.AddSingleton(typeof(IRepository<>), typeof(MongoRepository<>));
-
-            
-
-            builder.Services.AddAuthentication(AuthScheme)
-                .AddCookie(AuthScheme, options =>
+            builder.Services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20); // Session expires after 20 minutes
-                    options.SlidingExpiration = true; // Reset expiration on activity
-                    options.LoginPath = "/api/users/login"; // Redirect to login path for unauthenticated requests
-                });
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "https://localhost:5001",
+                    ValidAudience = "https://localhost:5001",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey12345"))
+                };
+            });
 
 
-            builder.Services.AddAuthorization();
+
+
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddControllers();

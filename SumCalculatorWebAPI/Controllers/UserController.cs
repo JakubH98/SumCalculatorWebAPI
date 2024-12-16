@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using static SumCalculatorWebAPI.Controllers.GenericControllercs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace SumCalculatorWebAPI.Controllers
 {
@@ -56,16 +60,32 @@ namespace SumCalculatorWebAPI.Controllers
             {
                 return Conflict("Invalid username or password.");
             }
+            var token = GenerateJwtToken(existingUser.Username);
 
-            await HttpContext.SignInAsync(Program.AuthScheme, new System.Security.Claims.ClaimsPrincipal(
-            new System.Security.Claims.ClaimsIdentity(new[]
+            // Remove the password before returning the user object
+            existingUser.Password = null;
+
+            return Ok(new
             {
-                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, request.Username)
-            }, Program.AuthScheme)));
+                Token = token,
+                User = existingUser
+            });
 
-            existingUser.Password = null; // Remove the password from the response
-            return Ok(existingUser);
+        }
+        private string GenerateJwtToken(string username)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey12345"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+            var tokenDescriptor = new JwtSecurityToken(
+                issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims: new[] { new Claim(ClaimTypes.Name, username) },
+                expires: DateTime.UtcNow.AddMinutes(20),
+                signingCredentials: credentials
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
         [HttpPost("logout")]
@@ -74,5 +94,7 @@ namespace SumCalculatorWebAPI.Controllers
             await HttpContext.SignOutAsync(Program.AuthScheme);
             return Ok("Logged out successfully.");
         }
+
+
     }
 }

@@ -38,3 +38,13 @@ C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\ne
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Snappier.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\ZstdSharp.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.sourcelink.json
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
