@@ -1,10 +1,14 @@
 ﻿using SumCalculatorWebAPI.Domain;
 using Microsoft.AspNetCore.Mvc;
 using static SumCalculatorWebAPI.Controllers.GenericControllercs;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 namespace SumCalculatorWebAPI.Controllers
 {
     [Route("api/users")]
+    [ApiController]
+    [Authorize(AuthenticationSchemes = Program.AuthScheme)]
     public class UsersController : GenericController<User>
     {
         private readonly IRepository<User> _repository;
@@ -36,7 +40,7 @@ namespace SumCalculatorWebAPI.Controllers
             await _repository.Add(user);
             return CreatedAtAction(nameof(GetById), new { id = user.ID }, user);
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
@@ -53,9 +57,22 @@ namespace SumCalculatorWebAPI.Controllers
                 return Conflict("Invalid username or password.");
             }
 
-            existingUser.Password = null;
+            await HttpContext.SignInAsync(Program.AuthScheme, new System.Security.Claims.ClaimsPrincipal(
+            new System.Security.Claims.ClaimsIdentity(new[]
+            {
+                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, request.Username)
+            }, Program.AuthScheme)));
 
+            existingUser.Password = null; // Remove the password from the response
             return Ok(existingUser);
+
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(Program.AuthScheme);
+            return Ok("Logged out successfully.");
         }
     }
 }

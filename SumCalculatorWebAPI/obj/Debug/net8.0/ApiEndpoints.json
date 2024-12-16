@@ -152,5 +152,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "Logout",
+    "RelativePath": "api/users/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

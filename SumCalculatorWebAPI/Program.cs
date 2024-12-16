@@ -7,18 +7,29 @@ using System.Diagnostics;
 
 namespace SumCalculatorWebAPI
 {
+
     
     public class Program
     {
+        public const string AuthScheme = "Token";
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             
             builder.Services.Configure<Database>(builder.Configuration.GetSection("DatabaseSettings"));
-
             
             builder.Services.AddSingleton(typeof(IRepository<>), typeof(MongoRepository<>));
+
+            
+
+            builder.Services.AddAuthentication(AuthScheme)
+                .AddCookie(AuthScheme, options =>
+                {
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20); // Session expires after 20 minutes
+                    options.SlidingExpiration = true; // Reset expiration on activity
+                    options.LoginPath = "/api/users/login"; // Redirect to login path for unauthenticated requests
+                });
+
 
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
@@ -36,9 +47,12 @@ namespace SumCalculatorWebAPI
 
             var app = builder.Build();
 
+
+
             // Enable CORS 
             app.UseCors("AllowReactApp");
-
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             if (app.Environment.IsDevelopment())
             {
@@ -52,8 +66,7 @@ namespace SumCalculatorWebAPI
             app.MapControllers();
             app.UseHttpsRedirection();
 
-
-
+            app.Run();
 
 
 
@@ -110,8 +123,6 @@ namespace SumCalculatorWebAPI
                 await repository.Delete(id);
                 return Results.Ok("Project deleted successfully.");
             });*/
-
-            app.Run();
         }
     }
 }
