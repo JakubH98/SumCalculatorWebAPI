@@ -61,6 +61,11 @@ namespace SumCalculatorWebAPI
             var filter = Builders<T>.Filter.Eq("ID", id.ToString());
             await _collection.DeleteOneAsync(filter);
         }
+
+        public async Task<List<T>> GetAll()
+        {
+            return await _collection.Find(record => true).ToListAsync();
+        }
         public async Task<bool> Exists(Expression<Func<T, bool>> predicate)
         {
             return await _collection.Find(predicate).AnyAsync();

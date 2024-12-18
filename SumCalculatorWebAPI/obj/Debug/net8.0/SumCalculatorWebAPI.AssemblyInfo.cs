@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SumCalculatorWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14279e2be2e3b23d8321b5f2082e3e70aafd86f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05f9c7d070a082a315eb2228f845cd2002818379")]
 [assembly: System.Reflection.AssemblyProductAttribute("SumCalculatorWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SumCalculatorWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

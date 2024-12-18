@@ -36,5 +36,6 @@ namespace SumCalculatorWebAPI.Controllers
             return Ok(method);
         }
 
+
     }
 }

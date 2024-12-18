@@ -38,6 +38,12 @@ namespace SumCalculatorWebAPI.Controllers
                 }
                 return Ok(entity);
             }
+            [HttpGet]
+            public virtual async Task<IActionResult> GetAll()
+            {
+                var entities = await _repository.GetAll();
+                return Ok(entities);
+            }
 
             [HttpPut("{id}")]
             public async Task<IActionResult> Update(int id, [FromBody] T updatedEntity)

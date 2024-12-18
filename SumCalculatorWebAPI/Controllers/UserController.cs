@@ -20,6 +20,34 @@ namespace SumCalculatorWebAPI.Controllers
             _repository = repository;
         }
 
+        [HttpPut("{id}/methodology")]
+        public async Task<IActionResult> UpdateMethodology(string id, [FromBody] Method method)
+        {
+            var user = await _repository.Get(int.Parse(id));
+            if (user == null)
+            {
+                return NotFound($"User with ID {id} not found.");
+            }
+
+            user.Method = method;
+
+
+            await _repository.Update(user);
+
+            return Ok(new { message = "Methodology updated successfully." });
+        }
+        [HttpGet("{id}/methodology")]
+        public async Task<IActionResult> GetMethodology(string id)
+        {
+            var user = await _repository.Get(int.Parse(id));
+            if (user == null)
+            {
+                return NotFound($"User with ID {id} not found.");
+            }
+
+            return Ok(user.Method);
+        }
+
         [HttpPost]
         public override async Task<IActionResult> Add([FromBody] User user)
         {
@@ -69,7 +97,6 @@ namespace SumCalculatorWebAPI.Controllers
                 User = existingUser
             });
         }
-
         private string GenerateJwtToken(string username)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JakubsTopSecretSuperKeyThatNobodyShouldEverKnowAbout12345"));
