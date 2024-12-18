@@ -29,7 +29,7 @@ namespace SumCalculatorWebAPI.Controllers
             }
 
             [HttpGet("{id}")]
-            public async Task<IActionResult> GetById(int id)
+            public virtual async Task<IActionResult> GetById(int id)
             {
                 var entity = await _repository.Get(id);
                 if (entity == null)

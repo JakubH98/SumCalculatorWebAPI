@@ -1,5 +1,74 @@
 [
   {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.MethodController",
+    "Method": "Add",
+    "RelativePath": "api/Method",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "method",
+        "Type": "SumCalculatorWebAPI.Domain.Method",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.MethodController",
+    "Method": "GetById",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Method, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedEntity",
+        "Type": "SumCalculatorWebAPI.Domain.Method",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Method, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Delete",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
     "Method": "Add",
     "RelativePath": "api/projects",
