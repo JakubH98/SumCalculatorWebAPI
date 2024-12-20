@@ -31,8 +31,11 @@ C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\ne
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.pdb
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\SumCalculatorWebAPI.genruntimeconfig.cache
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\obj\Debug\net8.0\ref\SumCalculatorWebAPI.dll
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> dev
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\DnsClient.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\MongoDB.Bson.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\MongoDB.Driver.dll
@@ -50,5 +53,8 @@ C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\ne
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+<<<<<<< HEAD
 C:\Users\ja1ko\source\repos\SumCalculatorWebAPI\SumCalculatorWebAPI\bin\Debug\net8.0\Dbfiles\MethodData.json
 >>>>>>> Stashed changes
+=======
+>>>>>>> dev

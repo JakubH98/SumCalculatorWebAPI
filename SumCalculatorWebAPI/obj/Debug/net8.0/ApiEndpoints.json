@@ -1,0 +1,302 @@
+[
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.MethodController",
+    "Method": "Add",
+    "RelativePath": "api/Method",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "method",
+        "Type": "SumCalculatorWebAPI.Domain.Method",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Method, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/Method",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.MethodController",
+    "Method": "GetById",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Method, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedEntity",
+        "Type": "SumCalculatorWebAPI.Domain.Method",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Method, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Delete",
+    "RelativePath": "api/Method/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Add",
+    "RelativePath": "api/projects",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "entity",
+        "Type": "SumCalculatorWebAPI.Domain.Project",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/projects",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetById",
+    "RelativePath": "api/projects/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/projects/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedEntity",
+        "Type": "SumCalculatorWebAPI.Domain.Project",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.Project, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Delete",
+    "RelativePath": "api/projects/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "Add",
+    "RelativePath": "api/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "SumCalculatorWebAPI.Domain.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.User, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.User, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetById",
+    "RelativePath": "api/users/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.User, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/users/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedEntity",
+        "Type": "SumCalculatorWebAPI.Domain.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.GenericControllercs\u002BGenericController\u00601[[SumCalculatorWebAPI.Domain.User, SumCalculatorWebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Delete",
+    "RelativePath": "api/users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "UpdateMethodology",
+    "RelativePath": "api/users/{id}/methodology",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "method",
+        "Type": "SumCalculatorWebAPI.Domain.Method",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "GetMethodology",
+    "RelativePath": "api/users/{id}/methodology",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "Login",
+    "RelativePath": "api/users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SumCalculatorWebAPI.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SumCalculatorWebAPI.Controllers.UsersController",
+    "Method": "Logout",
+    "RelativePath": "api/users/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
