@@ -1,0 +1,498 @@
+
+{
+	"ID": "1",
+	"Title": "Waterfall",
+	"Description": "The Waterfall methodology is a structured, sequential software development process that divides the project into distinct phases. Each phase—requirements, design, implementation, testing, and deployment—must be completed before moving to the next. Waterfall is suited for projects with clear and unchanging requirements, especially where safety or precision is critical.",
+	"ArtifactList": [
+		{
+			"Title": "Requirement Specification",
+			"Description": "A detailed document outlining all system requirements."
+		},
+		{
+			"Title": "Design Document",
+			"Description": "Technical specifications for the system's architecture and components."
+		},
+		{
+			"Title": "ER Diagram",
+			"Description": "Defines the relationships between data entities for database design."
+		},
+		{
+			"Title": "Test Plan",
+			"Description": "Specifies test cases, procedures, and metrics to validate the system."
+		}
+		
+	],
+	"ActorList": [
+		{
+			"Title": "Project Manager",
+			"Description": "Oversees the project, ensuring phases are completed sequentially."
+		},
+		{
+			"Title": "System Analyst",
+			"Description": "Gathers requirements and translates them into system specifications."
+		},
+		{
+			"Title": "Developers",
+			"Description": "Implement the system based on the design document."
+		},
+		{
+			"Title": "Testers",
+			"Description": "Perform validation and verification during the testing phase."
+		}
+	],
+	"TodoList": [
+		{
+			"Title": "(Requirements Phase) Gather Requirements",
+			"Description": "Collect detailed system requirements from stakeholders.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Requirements Phase) Document Requirements",
+			"Description": "Write a comprehensive Requirements Specification document.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Design Phase) Create System Design",
+			"Description": "Develop system architecture, including ER diagrams and technical specifications.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Design Phase) Document Design",
+			"Description": "Finalize the design document outlining modules, flows, and data structures.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Implementation Phase) Develop Code",
+			"Description": "Program the system components based on the design document.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Implementation Phase) Integrate Modules",
+			"Description": "Combine system components to ensure smooth functionality.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Testing Phase) Validate System",
+			"Description": "Execute test plans to identify and fix defects.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Testing Phase) Verify Requirements",
+			"Description": "Ensure all requirements from the specification are met.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Deployment Phase) Deploy Solution",
+			"Description": "Release the fully tested system to the production environment.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Deployment Phase) Conduct User Training",
+			"Description": "Train users to operate the system effectively.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Maintenance Phase) Monitor System",
+			"Description": "Perform maintenance and address post-deployment issues.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Maintenance Phase) Provide Support",
+			"Description": "Implement minor fixes or improvements as required.",
+			"IsDone": false
+		}
+	]
+}
+{
+	"ID": "2",
+	"Title": "Unified Process",
+	"Description": "The Unified Process (UP) is an iterative, agile software development framework that focuses on creating working software while maintaining essential documentation. UP divides projects into four key phases: Inception, Elaboration, Construction, and Transition. Each phase ensures requirements are refined, risks are addressed, and functional increments are delivered. UP is flexible and scalable for both large and small projects.",
+	"ArtifactList": [
+		{
+			"Title": "Vision",
+			"Description": "A concise Description of the overall project goal, ensuring alignment with user expectations."
+		},
+		{
+			"Title": "Business Rules",
+			"Description": "Documents rules that impact system behavior, such as legal and operational constraints."
+		},
+		{
+			"Title": "Datadictionary",
+			"Description": "Defines important terms for the system to ensure a shared understanding."
+		},
+		{
+			"Title": "Use Cases",
+			"Description": "Describes interactions between users (actors) and the system. Can be brief or detailed."
+		},
+		{
+			"Title": "Domain Model",
+			"Description": "Represents key concepts and relationships within the business domain."
+		}
+	],
+	"ActorList": [
+		{
+			"Title": "Project Manager",
+			"Description": "Oversees the process, ensuring project timelines and goals are met."
+		},
+		{
+			"Title": "System Architect",
+			"Description": "Designs the system architecture and addresses technical risks."
+		},
+		{
+			"Title": "Developers",
+			"Description": "Build software components iteratively."
+		},
+		{
+			"Title": "Testers",
+			"Description": "Perform ongoing testing to validate functionality and address defects."
+		},
+		{
+			"Title": "Stakeholders",
+			"Description": "Provide feedback, clarify requirements, and validate deliverables."
+		}
+	],
+	"TodoList": [
+		{
+			"Title": "(Inception Phase) Define Vision",
+			"Description": "Create a clear project vision describing goals and desired outcomes.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Inception Phase) Identify Requirements",
+			"Description": "List high-level requirements and develop a domain model for understanding the system.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Inception Phase) Establish Feasibility",
+			"Description": "Assess technical, economic, and resource feasibility.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Elaboration Phase) Refine Architecture",
+			"Description": "Build core system architecture and identify potential risks.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Elaboration Phase) Develop Use Cases",
+			"Description": "Write detailed use cases that define system interactions.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Elaboration Phase) Prototype Development",
+			"Description": "Create initial prototypes to validate design choices.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Construction Phase) Implement Core Features",
+			"Description": "Develop software components iteratively, starting with high-priority features.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Construction Phase) Test and Integrate",
+			"Description": "Continuously integrate and test new functionality for stability.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Transition Phase) Deploy Solution",
+			"Description": "Deploy the software to the production environment.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Transition Phase) Conduct User Training",
+			"Description": "Train end-users to ensure smooth adoption of the system.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Transition Phase) Gather Feedback",
+			"Description": "Collect user input to identify improvements for future iterations.",
+			"IsDone": false
+		}
+	]
+}
+{
+	"ID": "3",
+	"Title": "DSDM",
+	"Description": "DSDM, or Atern, is an agile project management and delivery framework that focuses on delivering business value quickly and efficiently. It emphasizes delivering 80% of functionality in 20% of the time. DSDM is structured into phases to establish a solid foundation before development begins. It is suitable for large projects and ensures quality through iterative development and timeboxing. Key principles include focusing on business needs, delivering on time, collaborative teamwork, and never compromising on quality.",
+	"ArtifactList": [
+		{
+			"Title": "Terms of Reference",
+			"Description": "Defines the scope and purpose of the project at an early stage."
+		},
+		{
+			"Title": "Feasibility Assessment",
+			"Description": "A study of whether the solution is technically, economically, and ethically viable."
+		},
+		{
+			"Title": "Prioritized Requirements List (PRL)",
+			"Description": "A list of requirements prioritized to deliver maximum business value."
+		},
+		{
+			"Title": "Delivery Plan",
+			"Description": "Outlines project delivery, phases, and iteration breakdown."
+		},
+		{
+			"Title": "Timebox Plan",
+			"Description": "Detailed plan for timeboxed iterations, including tasks and expected outputs."
+		},
+		{
+			"Title": "Solution Assurance Pack",
+			"Description": "Ensures quality standards are met for each iteration."
+		}
+	],
+	"ActorList": [
+		{
+			"Title": "Project Sponsor",
+			"Description": "Provides project funding and ensures alignment with business goals."
+		},
+		{
+			"Title": "DSDM Coach",
+			"Description": "Facilitates the methodology, guiding the team through the process."
+		},
+		{
+			"Title": "Business Analyst",
+			"Description": "Ensures business requirements are understood and met."
+		},
+		{
+			"Title": "Developers",
+			"Description": "Responsible for implementing the prioritized requirements iteratively."
+		},
+		{
+			"Title": "Testers",
+			"Description": "Validate solutions during each phase to ensure quality."
+		}
+	],
+	"TodoList": [
+		{
+			"Title": "(Pre-Project) Define Project Proposal",
+			"Description": "Create a Terms of Reference, identifying business needs, stakeholders, and objectives.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Pre-Project) Conduct Feasibility Study",
+			"Description": "Evaluate technical, economic, and ethical feasibility. Determine whether the project is viable.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Foundations) Establish Project Foundations",
+			"Description": "Define high-level requirements and system architecture. Create the Prioritized Requirements List (PRL).",
+			"IsDone": false
+		},
+		{
+			"Title": "(Foundations) Set Management & Delivery Controls",
+			"Description": "Plan timelines and establish control mechanisms.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Exploration (Iterative Phase)) Build Evolutionary Prototypes",
+			"Description": "Create incremental prototypes to refine requirements and gather feedback.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Exploration (Iterative Phase)) Refine Requirements",
+			"Description": "Update the PRL based on user input and evolving needs.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Engineering (Iterative Phase)) Develop Functionality",
+			"Description": "Implement solutions iteratively, testing prototypes for quality assurance.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Engineering (Iterative Phase)) Review and Refine Deliverables",
+			"Description": "Validate the evolving solution against business needs.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Deployment) Deliver Final Solution",
+			"Description": "Deploy the completed solution to the business. Ensure all critical requirements are addressed.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Deployment) Evaluate Project",
+			"Description": "Conduct a review to assess if the business goals were achieved.",
+			"IsDone": false
+		}
+	]
+}
+{
+	"ID": "4",
+	"Title": "Scrum",
+	"Description": "Scrum is an agile framework for managing software development projects through timeboxed iterations called \"sprints.\" It emphasizes teamwork, accountability, and continuous improvement. Scrum focuses on delivering working software frequently, with progress tracked using ArtifactList like the Product Backlog and Sprint Backlog.",
+	"ArtifactList": [
+		{
+			"Title": "Product Backlog",
+			"Description": "A prioritized list of features, user stories, and tasks needed for the project."
+		},
+		{
+			"Title": "Sprint Backlog",
+			"Description": "A subset of the Product Backlog selected for implementation during a sprint."
+		},
+		{
+			"Title": "Burndown Charts",
+			"Description": "Visual graphs that track progress toward completing tasks in sprints and releases."
+		},
+		{
+			"Title": "Kanban Board",
+			"Description": "Used to track tasks, often organized into \"To Do,\" \"In Progress,\" and \"Done\" columns."
+		}
+	],
+	"ActorList": [
+		{
+			"Title": "Product Owner",
+			"Description": "Represents stakeholders, defines project vision, and prioritizes backlog items."
+		},
+		{
+			"Title": "Scrum Master",
+			"Description": "Facilitates the Scrum process, removes obstacles, and ensures team focus."
+		},
+		{
+			"Title": "Development Team",
+			"Description": "Cross-functional team responsible for implementing tasks and delivering increments."
+		}
+	],
+	"TodoList": [
+		{
+			"Title": "(Sprint Planning) Define Product Backlog",
+			"Description": "Create and prioritize a list of user stories and features.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Planning) Set Sprint Goals",
+			"Description": "Collaborate with the Product Owner to select backlog items for the sprint.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Planning) Break Down Tasks",
+			"Description": "Refine the Sprint Backlog by breaking user stories into smaller, actionable tasks.",
+			"IsDone": false
+		},
+		{
+			"Title": "(During the Sprint) Daily Stand-Up Meetings",
+			"Description": "Conduct daily 15-minute meetings to track progress and address obstacles.",
+			"IsDone": false
+		},
+		{
+			"Title": "(During the Sprint) Develop Incrementally",
+			"Description": "Focus on completing tasks from the Sprint Backlog.",
+			"IsDone": false
+		},
+		{
+			"Title": "(During the Sprint) Update Burndown Chart",
+			"Description": "Monitor remaining work to ensure progress aligns with the sprint timeline.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Review) Demonstrate Completed Work",
+			"Description": "Present completed user stories to stakeholders for feedback.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Review) Update Product Backlog",
+			"Description": "Incorporate new feedback and prioritize items for the next sprint.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Retrospective) Reflect on Process",
+			"Description": "Identify successes, challenges, and areas for improvement.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Sprint Retrospective) Plan Improvements",
+			"Description": "Implement changes in the next sprint to optimize team efficiency.",
+			"IsDone": false
+		}
+	]
+}
+{
+	"ID": "5",
+	"Title": "XP",
+	"Description": "XP is an agile software development methodology that prioritizes flexibility, collaboration, and high-quality software delivery. It focuses on continuous feedback, pair programming, and test-driven development. XP is ideal for projects with evolving requirements and emphasizes delivering value quickly through small, incremental releases.",
+	"ArtifactList": [
+		{
+			"Title": "User Stories",
+			"Description": "High-level descriptions of functionality from the user's perspective."
+		},
+		{
+			"Title": "Spike",
+			"Description": "A prototype or test implementation used to explore solutions to technical challenges."
+		},
+		{
+			"Title": "System Metaphor",
+			"Description": "A simple Description of the system's architecture to ensure shared understanding."
+		},
+		{
+			"Title": "Planning Game",
+			"Description": "A collaborative process for prioritizing user stories and planning iterations."
+		}
+	],
+	"ActorList": [
+		{
+			"Title": "Customer",
+			"Description": "Provides user stories, prioritizes requirements, and validates the final product."
+		},
+		{
+			"Title": "Programmers",
+			"Description": "Write code, perform pair programming, and implement small, incremental releases."
+		},
+		{
+			"Title": "Tester",
+			"Description": "Ensures functionality meets acceptance criteria through test-driven development."
+		},
+		{
+			"Title": "Manager",
+			"Description": "Removes obstacles, observes progress, and resolves team issues."
+		}
+	],
+	"TodoList": [
+		{
+			"Title": "(Planning) Gather User Stories",
+			"Description": "Collect requirements in the form of short, actionable user stories.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Planning) Prioritize Features",
+			"Description": "Collaborate with the customer to prioritize stories based on business value.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Planning) Estimate Costs",
+			"Description": "Estimate effort and timelines for each user story.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Iteration) Develop Small Releases",
+			"Description": "Deliver working software incrementally in small, deployable releases.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Iteration) Test First (TDD)",
+			"Description": "Write automated tests before developing the functionality.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Iteration) Pair Programming",
+			"Description": "Use pair programming to improve code quality and knowledge sharing.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Refactoring) Refactor Code",
+			"Description": "Continuously improve the codebase to maintain simplicity and avoid duplication.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Continuous Integration) Integrate Frequently",
+			"Description": "Merge and test changes continuously to ensure stability.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Feedback Loop) Collect Feedback",
+			"Description": "Regularly gather customer feedback to adjust features or priorities.",
+			"IsDone": false
+		},
+		{
+			"Title": "(Feedback Loop) Repeat Iteration",
+			"Description": "Repeat the cycle of small releases, testing, and refactoring until all stories are complete.",
+			"IsDone": false
+		}
+	]
+}
